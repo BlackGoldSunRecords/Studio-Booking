@@ -14,12 +14,12 @@
     body {
       margin: 0;
       background: #151515;
-      color: #f5f0e6;
+      color: #f1eadc;
       font-family: Arial, sans-serif;
+      text-align: center;
     }
 
     header {
-      text-align: center;
       padding: 65px 20px 35px;
     }
 
@@ -33,48 +33,62 @@
 
     .subtitle {
       color: #c9a96e;
-      letter-spacing: 4px;
+      font-size: 13px;
+      letter-spacing: 5px;
+      margin-top: 15px;
     }
 
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
+    .intro {
+      max-width: 600px;
+      margin: 25px auto 50px;
+      padding: 0 20px;
+      color: #c9c2b5;
+      line-height: 1.7;
+      font-size: 15px;
     }
 
     .spaces {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      padding: 0 20px 70px;
     }
 
-    .space {
-      background: #242424;
-      border: 1px solid #49412f;
-      border-radius: 12px;
-      padding: 28px;
+    .space-card {
+      border: 1px solid #6f5b3c;
+      padding: 45px 30px;
+      width: 320px;
       min-height: 220px;
     }
 
-    .space h2 {
+    .space-card h2 {
       color: #d5b77c;
+      font-size: 21px;
+      font-weight: normal;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
     }
 
-    .space p {
-      color: #ccc;
+    .space-card p {
+      color: #c9c2b5;
+      font-size: 14px;
       line-height: 1.6;
     }
 
-    .coming {
-      color: #d5b77c;
-      font-size: 13px;
-      letter-spacing: 2px;
+    .coming-soon {
+      color: #c9a96e;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-top: 25px;
     }
 
     footer {
-      text-align: center;
-      padding: 50px 20px;
-      color: #888;
+      border-top: 1px solid #3a3328;
+      padding: 25px 20px;
+      color: #8d8578;
+      font-size: 11px;
+      letter-spacing: 2px;
     }
   </style>
 </head>
@@ -83,44 +97,42 @@
 
   <header>
     <img
-      src="Black%20Gold%20Sun%20White%20line%203.PNG"
-      alt="Black Gold Sun logo"
       class="logo"
+      src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG"
+      alt="Black Gold Sun Records logo"
     >
 
     <div class="subtitle">RECORDS</div>
-
-    <p>Independent creative spaces in London</p>
   </header>
 
-  <main>
-    <div class="spaces">
+  <section class="intro">
+    Independent creative spaces in London.
 
-      <section class="space">
-        <h2>Music Studio</h2>
+    <br><br>
 
-        <p>
-          Recording, music production and shared studio
-          sessions. Book your time and manage your
-          monthly studio hours.
-        </p>
+    A home for music, tattooing and creative expression.
+  </section>
 
-        <div class="coming">BOOKING SYSTEM COMING SOON</div>
-      </section>
+  <main class="spaces">
 
-      <section class="space">
-        <h2>Tattoo Space</h2>
-
-        <p>
-          A separate creative space for tattoo artists
-          and appointments, with its own availability
-          and booking calendar.
-        </p>
-
-        <div class="coming">BOOKING SYSTEM COMING SOON</div>
-      </section>
-
+    <div class="space-card">
+      <h2>MUSIC STUDIO</h2>
+      <p>
+        A dedicated creative space for recording,
+        writing, rehearsing and making music.
+      </p>
+      <div class="coming-soon">BOOKING SYSTEM COMING SOON</div>
     </div>
+
+    <div class="space-card">
+      <h2>TATTOO SPACE</h2>
+      <p>
+        A private creative space for tattooing
+        and one-to-one appointments.
+      </p>
+      <div class="coming-soon">BOOKING SYSTEM COMING SOON</div>
+    </div>
+
   </main>
 
   <footer>

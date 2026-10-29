@@ -2,183 +2,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Gold Sun Records</title>
 
-  <title>Black Gold Sun Records | Studio Bookings</title>
+<style>
+* {
+  box-sizing: border-box;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+body {
+  margin: 0;
+  background: #151515;
+  color: #f2eadc;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-    body {
-      margin: 0;
-      background: #151515;
-      color: #f1eadc;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+header {
+  padding: 45px 20px 20px;
+}
 
-    header {
-      padding: 65px 20px 35px;
-    }
+.logo {
+  width: 190px;
+  max-width: 70%;
+  height: auto;
+  margin-bottom: 22px;
+}
 
-    .logo {
-      display: block;
-      width: min(100%, 440px);
-      max-height: 260px;
-      object-fit: contain;
-      margin: 0 auto 20px;
-    }
+h1 {
+  color: #d5b77c;
+  letter-spacing: 4px;
+  font-size: 25px;
+  margin: 10px 0;
+}
 
-    .brand-name {
-      color: #d5b77c;
-      font-size: 30px;
-      font-weight: normal;
-      letter-spacing: 6px;
-      margin: 20px 0 15px;
-    }
+.subtitle {
+  color: #c9a96e;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
 
-    .subtitle {
-      color: #c9a96e;
-      font-size: 13px;
-      letter-spacing: 6px;
-      margin-top: 15px;
-    }
+.intro {
+  max-width: 550px;
+  margin: 30px auto;
+  padding: 0 20px;
+  line-height: 1.7;
+  color: #d2c9bb;
+}
 
-    .intro {
-      max-width: 600px;
-      margin: 25px auto 50px;
-      padding: 0 20px;
-      color: #c9c2b5;
-      line-height: 1.7;
-      font-size: 15px;
-    }
+.spaces {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+  padding: 20px;
+}
 
-    .spaces {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      padding: 0 20px 70px;
-    }
+.space-card {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  padding: 38px 25px;
+  border: 1px solid #8e7449;
+  color: #f2eadc;
+  text-decoration: none;
+  transition: 0.2s;
+}
 
-    .space-card {
-      border: 1px solid #6f5b3c;
-      padding: 45px 30px;
-      width: 320px;
-      min-height: 220px;
-    }
+.space-card:hover {
+  background: #29251e;
+  border-color: #d5b77c;
+  transform: translateY(-3px);
+}
 
-    .space-card h2 {
-      color: #d5b77c;
-      font-size: 21px;
-      font-weight: normal;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-    }
+.space-card h2 {
+  color: #d5b77c;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
 
-    .space-card p {
-      color: #c9c2b5;
-      font-size: 14px;
-      line-height: 1.6;
-    }
+.space-card p {
+  color: #c9c0b3;
+  line-height: 1.6;
+}
 
-    .coming-soon {
-      color: #c9a96e;
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-top: 25px;
-    }
+.page {
+  display: none;
+  padding: 35px 20px 70px;
+}
 
-    footer {
-      border-top: 1px solid #3a3328;
-      padding: 25px 20px;
-      color: #8d8578;
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
+.page:target {
+  display: block;
+}
 
-    @media (max-width: 480px) {
-      .brand-name {
-        font-size: 21px;
-        letter-spacing: 3px;
-      }
+body:has(.page:target) #home {
+  display: none;
+}
 
-      .subtitle {
-        font-size: 12px;
-        letter-spacing: 5px;
-      }
-    }
-  </style>
+.back {
+  display: inline-block;
+  margin: 15px;
+  color: #d5b77c;
+  text-decoration: none;
+}
+
+.content-card {
+  max-width: 600px;
+  margin: 35px auto;
+  padding: 35px 25px;
+  border: 1px solid #8e7449;
+}
+
+.content-card h2 {
+  color: #d5b77c;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+.content-card p {
+  line-height: 1.7;
+  color: #d2c9bb;
+}
+
+footer {
+  padding: 30px;
+  color: #827967;
+  font-size: 12px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
+  <img
+    class="logo"
+    src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG"
+    alt="Black Gold Sun Records logo"
+  >
+  <h1>BLACK GOLD SUN RECORDS</h1>
+  <div class="subtitle">MUSIC STUDIO · CREATIVE SPACE</div>
+</header>
 
-    <img
-      class="logo"
-      src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG"
-      alt="Black Gold Sun logo"
-    >
+<main>
 
-    <h1 class="brand-name">BLACK GOLD SUN RECORDS</h1>
-
-    <div class="subtitle">STUDIO BOOKINGS</div>
-
-  </header>
-
-  <section class="intro">
-
+<section id="home">
+  <div class="intro">
     Independent creative spaces in London.
-
-    <br><br>
-
     A home for music, tattooing and creative expression.
+  </div>
 
-  </section>
+  <div class="spaces">
+    <a class="space-card" href="#music">
+      <h2>Music Studio</h2>
+      <p>Recording, creating and making music.</p>
+      <p>Enter the studio →</p>
+    </a>
 
-  <main class="spaces">
+    <a class="space-card" href="#tattoo">
+      <h2>Tattoo Space</h2>
+      <p>A creative space for tattooing.</p>
+      <p>Coming soon →</p>
+    </a>
+  </div>
+</section>
 
-    <div class="space-card">
+<section id="music" class="page">
+  <a class="back" href="#">← Back to homepage</a>
 
-      <h2>MUSIC STUDIO</h2>
+  <div class="content-card">
+    <h2>Music Studio</h2>
+    <p>
+      Welcome to the Black Gold Sun Records music studio.
+    </p>
+    <p>
+      View studio availability and arrange your recording sessions.
+    </p>
+    <p style="color:#d5b77c;">
+      MEMBER BOOKING SYSTEM COMING SOON
+    </p>
+  </div>
+</section>
 
-      <p>
-        A dedicated creative space for recording,
-        writing, rehearsing and making music.
-      </p>
+<section id="tattoo" class="page">
+  <a class="back" href="#">← Back to homepage</a>
 
-      <div class="coming-soon">
-        BOOKING SYSTEM COMING SOON
-      </div>
+  <div class="content-card">
+    <h2>Tattoo Space</h2>
+    <p>
+      A creative space for tattoo artists and clients.
+    </p>
+    <p style="color:#d5b77c;">
+      COMING SOON
+    </p>
+  </div>
+</section>
 
-    </div>
+</main>
 
-    <div class="space-card">
-
-      <h2>TATTOO SPACE</h2>
-
-      <p>
-        A private creative space for tattooing
-        and one-to-one appointments.
-      </p>
-
-      <div class="coming-soon">
-        BOOKING SYSTEM COMING SOON
-      </div>
-
-    </div>
-
-  </main>
-
-  <footer>
-
-    BLACK GOLD SUN RECORDS · LONDON
-
-  </footer>
+<footer>
+  BLACK GOLD SUN RECORDS
+</footer>
 
 </body>
 </html>

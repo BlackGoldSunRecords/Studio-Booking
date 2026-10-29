@@ -184,13 +184,6 @@ function formatDate(value) {
   });
 }
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    '&':'&amp;', '<':'&lt;', '>':'&gt;',
-    '"':'&quot;', "'":'&#39;'
-  })[char]);
-}
-
 async function loadAvailability() {
   const container = el('availability');
   container.textContent = 'Loading availability...';
@@ -204,7 +197,7 @@ async function loadAvailability() {
 
   if (error) {
     container.textContent = 'Could not load availability. Please refresh.';
-    console.error(error);
+    console.error('Availability error:', error);
     return;
   }
 
@@ -223,7 +216,14 @@ async function loadAvailability() {
 }
 
 async function updateAccount() {
-  const { data } = await supabase.auth.getSession();
+  const { data, error: sessionError } = await supabase.auth.getSession();
+
+  if (sessionError) {
+    console.error('Session error:', sessionError);
+    showMessage('accountMessage', 'Login session error: ' + sessionError.message);
+    return;
+  }
+
   currentUser = data.session?.user || null;
 
   el('loggedOut').classList.toggle('hidden', !!currentUser);
@@ -242,7 +242,9 @@ async function updateAccount() {
     .single();
 
   if (error) {
-    showMessage('memberStatus', 'We could not check your membership. Please try again.');
+    console.error('Membership profile lookup failed:', error);
+    approved = false;
+    showMessage('memberStatus', 'Membership error: ' + error.message);
     return;
   }
 

@@ -3,207 +3,388 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Black Gold Sun Records</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
+* { box-sizing:border-box; }
 body {
-  margin: 0;
-  background: #151515;
-  color: #f2eadc;
-  font-family: Arial, sans-serif;
-  text-align: center;
+  margin:0; background:#151515; color:#f2eadc;
+  font-family:Arial,sans-serif; text-align:center;
 }
-
-header {
-  padding: 45px 20px 20px;
-}
-
-.logo {
-  width: 190px;
-  max-width: 70%;
-  height: auto;
-  margin-bottom: 22px;
-}
-
-h1 {
-  color: #d5b77c;
-  letter-spacing: 4px;
-  font-size: 25px;
-  margin: 10px 0;
-}
-
-.subtitle {
-  color: #c9a96e;
-  letter-spacing: 3px;
-  font-size: 12px;
-}
-
-.intro {
-  max-width: 550px;
-  margin: 30px auto;
-  padding: 0 20px;
-  line-height: 1.7;
-  color: #d2c9bb;
-}
-
-.spaces {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 22px;
-  padding: 20px;
-}
-
+header { padding:35px 20px 15px; }
+.logo { width:170px; max-width:70%; margin-bottom:18px; }
+h1 { color:#d5b77c; letter-spacing:3px; font-size:23px; }
+.subtitle { color:#c9a96e; letter-spacing:3px; font-size:12px; }
+.intro { max-width:550px; margin:25px auto; padding:0 20px; line-height:1.7; }
+.spaces { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
 .space-card {
-  display: block;
-  width: 300px;
-  max-width: 100%;
-  padding: 38px 25px;
-  border: 1px solid #8e7449;
-  color: #f2eadc;
-  text-decoration: none;
-  transition: 0.2s;
+  display:block; width:290px; padding:30px 20px;
+  border:1px solid #8e7449; color:#f2eadc;
+  text-decoration:none; transition:.2s;
 }
-
-.space-card:hover {
-  background: #29251e;
-  border-color: #d5b77c;
-  transform: translateY(-3px);
+.space-card:hover { background:#29251e; border-color:#d5b77c; }
+h2 { color:#d5b77c; font-weight:normal; letter-spacing:2px; }
+.page { display:none; padding:20px 15px 60px; }
+.page:target { display:block; }
+body:has(.page:target) #home { display:none; }
+.back { color:#d5b77c; text-decoration:none; }
+.panel {
+  max-width:650px; margin:25px auto; padding:25px;
+  border:1px solid #8e7449; text-align:left;
 }
-
-.space-card h2 {
-  color: #d5b77c;
-  font-weight: normal;
-  letter-spacing: 2px;
+.panel h2 { text-align:center; }
+input, button {
+  width:100%; padding:12px; margin:7px 0;
+  font-size:15px; border-radius:3px;
 }
-
-.space-card p {
-  color: #c9c0b3;
-  line-height: 1.6;
+input { background:#f2eadc; border:1px solid #8e7449; color:#151515; }
+button {
+  background:#c9a96e; color:#151515; border:0;
+  cursor:pointer; font-weight:bold;
 }
-
-.page {
-  display: none;
-  padding: 35px 20px 70px;
+button:hover { background:#e1c58d; }
+.secondary { background:transparent; color:#d5b77c; border:1px solid #8e7449; }
+.small { font-size:13px; color:#bdb3a5; line-height:1.6; }
+.message { margin:12px 0; color:#d5b77c; line-height:1.5; }
+.booking {
+  border-bottom:1px solid #514633; padding:13px 3px;
+  line-height:1.6;
 }
-
-.page:target {
-  display: block;
-}
-
-body:has(.page:target) #home {
-  display: none;
-}
-
-.back {
-  display: inline-block;
-  margin: 15px;
-  color: #d5b77c;
-  text-decoration: none;
-}
-
-.content-card {
-  max-width: 600px;
-  margin: 35px auto;
-  padding: 35px 25px;
-  border: 1px solid #8e7449;
-}
-
-.content-card h2 {
-  color: #d5b77c;
-  font-weight: normal;
-  letter-spacing: 2px;
-}
-
-.content-card p {
-  line-height: 1.7;
-  color: #d2c9bb;
-}
-
-footer {
-  padding: 30px;
-  color: #827967;
-  font-size: 12px;
-}
+.booking:last-child { border:0; }
+.booking strong { color:#d5b77c; }
+.hidden { display:none !important; }
+footer { padding:30px; color:#827967; font-size:12px; }
 </style>
 </head>
 
 <body>
 
 <header>
-  <img
-    class="logo"
-    src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG"
-    alt="Black Gold Sun Records logo"
-  >
-  <h1>BLACK GOLD SUN RECORDS</h1>
-  <div class="subtitle">MUSIC STUDIO · CREATIVE SPACE</div>
+<img class="logo"
+src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG"
+alt="Black Gold Sun Records logo">
+<h1>BLACK GOLD SUN RECORDS</h1>
+<div class="subtitle">MUSIC STUDIO · CREATIVE SPACE</div>
 </header>
 
 <main>
 
 <section id="home">
-  <div class="intro">
-    Independent creative spaces in London.
-    A home for music, tattooing and creative expression.
-  </div>
-
-  <div class="spaces">
-    <a class="space-card" href="#music">
-      <h2>Music Studio</h2>
-      <p>Recording, creating and making music.</p>
-      <p>Enter the studio →</p>
-    </a>
-
-    <a class="space-card" href="#tattoo">
-      <h2>Tattoo Space</h2>
-      <p>A creative space for tattooing.</p>
-      <p>Coming soon →</p>
-    </a>
-  </div>
+<div class="intro">
+Independent creative spaces in London.
+A home for music, tattooing and creative expression.
+</div>
+<div class="spaces">
+<a class="space-card" href="#music">
+<h2>Music Studio</h2>
+<p>Recording, creating and making music.</p>
+<p>Enter the studio →</p>
+</a>
+<a class="space-card" href="#tattoo">
+<h2>Tattoo Space</h2>
+<p>A creative space for tattooing.</p>
+<p>Coming soon →</p>
+</a>
+</div>
 </section>
 
 <section id="music" class="page">
-  <a class="back" href="#">← Back to homepage</a>
+<a class="back" href="#">← Back to homepage</a>
+<h2>Music Studio</h2>
+<p class="small">View availability and arrange your recording sessions.</p>
 
-  <div class="content-card">
-    <h2>Music Studio</h2>
-    <p>
-      Welcome to the Black Gold Sun Records music studio.
-    </p>
-    <p>
-      View studio availability and arrange your recording sessions.
-    </p>
-    <p style="color:#d5b77c;">
-      MEMBER BOOKING SYSTEM COMING SOON
-    </p>
-  </div>
+<div class="panel">
+<h2>Studio availability</h2>
+<p class="small">
+Booked times are shown below. Times are displayed in UK local time.
+Personal member details are not shown publicly.
+</p>
+<div id="availability">Loading availability...</div>
+<button class="secondary" onclick="loadAvailability()">Refresh availability</button>
+</div>
+
+<div class="panel" id="accountPanel">
+<h2>Member access</h2>
+<p class="small">Log in to your account or create an account to request membership.</p>
+
+<div id="loggedOut">
+<label>Email address</label>
+<input id="email" type="email" placeholder="Your email address" autocomplete="email">
+<label>Password</label>
+<input id="password" type="password" placeholder="Password" autocomplete="current-password">
+<button onclick="login()">Log in</button>
+<button class="secondary" onclick="signup()">Create account</button>
+</div>
+
+<div id="loggedIn" class="hidden">
+<p id="memberStatus" class="message"></p>
+<button class="secondary" onclick="logout()">Log out</button>
+</div>
+<div id="accountMessage" class="message"></div>
+</div>
+
+<div class="panel hidden" id="bookingPanel">
+<h2>Book the studio</h2>
+<p class="small">
+Choose your start and finish times. Bookings can cross midnight,
+but must be no longer than 10 hours.
+</p>
+
+<label>Start date and time</label>
+<input id="startTime" type="datetime-local">
+
+<label>End date and time</label>
+<input id="endTime" type="datetime-local">
+
+<p id="duration" class="message">Your booking duration will appear here.</p>
+<button onclick="makeBooking()">Confirm booking</button>
+<div id="bookingMessage" class="message"></div>
+</div>
+
 </section>
 
 <section id="tattoo" class="page">
-  <a class="back" href="#">← Back to homepage</a>
-
-  <div class="content-card">
-    <h2>Tattoo Space</h2>
-    <p>
-      A creative space for tattoo artists and clients.
-    </p>
-    <p style="color:#d5b77c;">
-      COMING SOON
-    </p>
-  </div>
+<a class="back" href="#">← Back to homepage</a>
+<div class="panel">
+<h2>Tattoo Space</h2>
+<p>A creative space for tattoo artists and clients.</p>
+<p class="message">COMING SOON</p>
+</div>
 </section>
 
 </main>
 
-<footer>
-  BLACK GOLD SUN RECORDS
-</footer>
+<footer>BLACK GOLD SUN RECORDS</footer>
+
+<script type="module">
+import { createClient } from
+'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL = 'https://plofzjsbzshchrzzzoqh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_ZV8Mp-6q7agGxlNfJZOrEA_OP5ibWNH';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentUser = null;
+let approved = false;
+
+const el = id => document.getElementById(id);
+
+function showMessage(id, message) {
+  el(id).textContent = message;
+}
+
+function formatDate(value) {
+  return new Date(value).toLocaleString('en-GB', {
+    weekday:'short',
+    day:'numeric',
+    month:'short',
+    hour:'2-digit',
+    minute:'2-digit'
+  });
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;',
+    '"':'&quot;', "'":'&#39;'
+  })[char]);
+}
+
+async function loadAvailability() {
+  const container = el('availability');
+  container.textContent = 'Loading availability...';
+
+  const { data, error } = await supabase
+    .from('public_availability')
+    .select('starts_at,ends_at')
+    .gte('ends_at', new Date().toISOString())
+    .order('starts_at')
+    .limit(100);
+
+  if (error) {
+    container.textContent = 'Could not load availability. Please refresh.';
+    console.error(error);
+    return;
+  }
+
+  if (!data.length) {
+    container.textContent = 'No upcoming bookings. The studio currently has no recorded bookings.';
+    return;
+  }
+
+  container.innerHTML = data.map(item => `
+    <div class="booking">
+      <strong>Studio booked</strong><br>
+      ${formatDate(item.starts_at)}<br>
+      Until ${formatDate(item.ends_at)}
+    </div>
+  `).join('');
+}
+
+async function updateAccount() {
+  const { data } = await supabase.auth.getSession();
+  currentUser = data.session?.user || null;
+
+  el('loggedOut').classList.toggle('hidden', !!currentUser);
+  el('loggedIn').classList.toggle('hidden', !currentUser);
+  el('bookingPanel').classList.add('hidden');
+
+  if (!currentUser) {
+    approved = false;
+    return;
+  }
+
+  const { data: profile, error } = await supabase
+    .from('profiles')
+    .select('is_approved,is_admin')
+    .eq('id', currentUser.id)
+    .single();
+
+  if (error) {
+    showMessage('memberStatus', 'We could not check your membership. Please try again.');
+    return;
+  }
+
+  approved = profile.is_approved || profile.is_admin;
+
+  if (approved) {
+    showMessage('memberStatus', 'Welcome! Your membership is approved.');
+    el('bookingPanel').classList.remove('hidden');
+  } else {
+    showMessage('memberStatus', 'Your account has been created. Your membership is awaiting approval before you can book.');
+  }
+}
+
+async function signup() {
+  const email = el('email').value.trim();
+  const password = el('password').value;
+
+  if (!email || password.length < 8) {
+    showMessage('accountMessage', 'Enter your email and a password of at least 8 characters.');
+    return;
+  }
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password
+  });
+
+  if (error) {
+    showMessage('accountMessage', error.message);
+    return;
+  }
+
+  showMessage('accountMessage', 'Account created! Check your email if confirmation is requested, then log in. Membership approval is required before booking.');
+  await updateAccount();
+}
+
+async function login() {
+  const email = el('email').value.trim();
+  const password = el('password').value;
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    showMessage('accountMessage', error.message);
+    return;
+  }
+
+  showMessage('accountMessage', 'You are logged in.');
+  await updateAccount();
+}
+
+async function logout() {
+  await supabase.auth.signOut();
+  showMessage('accountMessage', 'You have logged out.');
+  await updateAccount();
+}
+
+async function makeBooking() {
+  if (!currentUser || !approved) {
+    showMessage('bookingMessage', 'You need approved membership to book.');
+    return;
+  }
+
+  const start = new Date(el('startTime').value);
+  const end = new Date(el('endTime').value);
+  const duration = (end - start) / 3600000;
+
+  if (!el('startTime').value || !el('endTime').value ||
+      isNaN(duration) || duration <= 0) {
+    showMessage('bookingMessage', 'Please enter valid start and finish times.');
+    return;
+  }
+
+  if (duration > 10) {
+    showMessage('bookingMessage', 'Bookings cannot be longer than 10 hours.');
+    return;
+  }
+
+  if (start < new Date()) {
+    showMessage('bookingMessage', 'You cannot book a time in the past.');
+    return;
+  }
+
+  const { error } = await supabase.from('bookings').insert({
+    user_id: currentUser.id,
+    starts_at: start.toISOString(),
+    ends_at: end.toISOString()
+  });
+
+  if (error) {
+    if (error.code === '23P01') {
+      showMessage('bookingMessage', 'Sorry, that time overlaps another booking. Please choose another slot.');
+    } else {
+      showMessage('bookingMessage', 'Booking could not be saved: ' + error.message);
+    }
+    return;
+  }
+
+  showMessage('bookingMessage', 'Your studio booking has been saved!');
+  el('startTime').value = '';
+  el('endTime').value = '';
+  el('duration').textContent = 'Your booking duration will appear here.';
+  await loadAvailability();
+}
+
+function updateDuration() {
+  const start = new Date(el('startTime').value);
+  const end = new Date(el('endTime').value);
+
+  if (!el('startTime').value || !el('endTime').value ||
+      isNaN(start) || isNaN(end)) {
+    el('duration').textContent = 'Your booking duration will appear here.';
+    return;
+  }
+
+  const hours = (end - start) / 3600000;
+  if (hours <= 0) {
+    el('duration').textContent = 'Please choose an end time after your start time.';
+  } else {
+    el('duration').textContent = `Booking length: ${hours.toFixed(2)} hours${hours > 10 ? ' — maximum 10 hours.' : ''}`;
+  }
+}
+
+el('startTime').addEventListener('change', updateDuration);
+el('endTime').addEventListener('change', updateDuration);
+
+window.login = login;
+window.signup = signup;
+window.logout = logout;
+window.makeBooking = makeBooking;
+window.loadAvailability = loadAvailability;
+
+supabase.auth.onAuthStateChange(() => {
+  setTimeout(updateAccount, 0);
+});
+
+await loadAvailability();
+await updateAccount();
+</script>
 
 </body>
 </html>

@@ -311,11 +311,13 @@ async function makeBooking() {
     return;
   }
 
-  const start = new Date(el('startTime').value);
-  const end = new Date(el('endTime').value);
+  const startValue = el('startTime').value;
+  const endValue = el('endTime').value;
+  const start = new Date(startValue);
+  const end = new Date(endValue);
   const duration = (end - start) / 3600000;
 
-  if (!el('startTime').value || !el('endTime').value ||
+  if (!startValue || !endValue ||
       isNaN(duration) || duration <= 0) {
     showMessage('bookingMessage', 'Please enter valid start and finish times.');
     return;
@@ -334,7 +336,8 @@ async function makeBooking() {
   const { error } = await supabase.from('bookings').insert({
     user_id: currentUser.id,
     starts_at: start.toISOString(),
-    ends_at: end.toISOString()
+    ends_at: end.toISOString(),
+    original_ends_at: end.toISOString()
   });
 
   if (error) {

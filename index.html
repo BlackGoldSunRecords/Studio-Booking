@@ -29,7 +29,7 @@ h2 { color:#d5b77c; font-weight:normal; letter-spacing:2px; }
 body:has(.page:target) #home { display:none; }
 .back { color:#d5b77c; text-decoration:none; }
 .panel {
-  max-width:650px; margin:25px auto; padding:25px;
+  max-width:750px; margin:25px auto; padding:25px;
   border:1px solid #8e7449; text-align:left;
 }
 .panel h2 { text-align:center; }
@@ -46,14 +46,79 @@ button:hover { background:#e1c58d; }
 .secondary { background:transparent; color:#d5b77c; border:1px solid #8e7449; }
 .small { font-size:13px; color:#bdb3a5; line-height:1.6; }
 .message { margin:12px 0; color:#d5b77c; line-height:1.5; }
+.hidden { display:none !important; }
+footer { padding:30px; color:#827967; font-size:12px; }
+
+.calendar { margin-top:20px; }
+.calendar-heading {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; margin-bottom:15px;
+}
+.calendar-heading button {
+  width:auto; min-width:85px; margin:0;
+}
+.calendar-heading h3 {
+  color:#d5b77c; font-size:17px; font-weight:normal;
+  letter-spacing:1px; margin:0;
+}
+.calendar-grid {
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:4px;
+}
+.weekday {
+  color:#c9a96e; font-size:11px; padding:9px 0;
+  text-align:center;
+}
+.day {
+  min-width:0; min-height:72px; padding:7px 2px;
+  margin:0; border:1px solid #514633;
+  background:#202020; color:#f2eadc;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:flex-start;
+  gap:5px; font-size:13px;
+}
+.day:hover { background:#30291e; }
+.day.outside { opacity:.35; }
+.day.today { border-color:#d5b77c; }
+.day.selected {
+  background:#403522; border:2px solid #d5b77c;
+}
+.day.has-booking { background:#29251e; }
+.day-number { font-size:13px; }
+.day-mark {
+  color:#d5b77c; font-size:10px;
+  line-height:1.2; overflow-wrap:anywhere;
+}
+.calendar-legend {
+  display:flex; flex-wrap:wrap; gap:15px;
+  margin-top:14px; color:#bdb3a5; font-size:12px;
+}
+.legend-dot {
+  display:inline-block; width:9px; height:9px;
+  border-radius:50%; background:#d5b77c; margin-right:5px;
+}
+.day-details {
+  margin-top:25px; padding-top:18px;
+  border-top:1px solid #514633;
+}
+.day-details h3 {
+  color:#d5b77c; font-weight:normal; letter-spacing:1px;
+}
 .booking {
-  border-bottom:1px solid #514633; padding:13px 3px;
-  line-height:1.6;
+  border-bottom:1px solid #514633;
+  padding:13px 3px; line-height:1.7;
 }
 .booking:last-child { border:0; }
 .booking strong { color:#d5b77c; }
-.hidden { display:none !important; }
-footer { padding:30px; color:#827967; font-size:12px; }
+.empty-day { color:#bdb3a5; line-height:1.6; }
+@media(max-width:420px) {
+  .panel { padding:15px 10px; }
+  .day { min-height:60px; }
+  .day-mark { font-size:9px; }
+  .calendar-heading button { min-width:65px; padding:10px 5px; }
+  .calendar-heading h3 { font-size:14px; }
+}
 </style>
 </head>
 
@@ -94,13 +159,34 @@ A home for music, tattooing and creative expression.
 <p class="small">View availability and arrange your recording sessions.</p>
 
 <div class="panel">
-<h2>Studio availability</h2>
-<p class="small">
-Booked times are shown below. Times are displayed in UK local time.
-Personal member details are not shown publicly.
+<h2>Studio calendar</h2>
+<p class="small" id="calendarPrivacy">
+Booked dates and times are shown below. Member names are private.
 </p>
-<div id="availability">Loading availability...</div>
-<button class="secondary" onclick="loadAvailability()">Refresh availability</button>
+
+<div class="calendar">
+<div class="calendar-heading">
+<button class="secondary" onclick="changeMonth(-1)">← Previous</button>
+<h3 id="monthTitle">Loading...</h3>
+<button class="secondary" onclick="changeMonth(1)">Next →</button>
+</div>
+
+<div class="calendar-grid" id="calendarGrid"></div>
+
+<div class="calendar-legend">
+<span><span class="legend-dot"></span>Booked time</span>
+<span>Outlined date = today</span>
+</div>
+
+<div class="day-details">
+<h3 id="selectedDateTitle">Select a date</h3>
+<div id="dayDetails" class="empty-day">
+Select a day on the calendar to see its bookings.
+</div>
+</div>
+</div>
+
+<button class="secondary" onclick="loadCalendar()">Refresh calendar</button>
 </div>
 
 <div class="panel" id="accountPanel">
@@ -167,11 +253,21 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
 let approved = false;
+let calendarMonth = new Date();
+let selectedDate = new Date();
+let calendarBookings = [];
 
 const el = id => document.getElementById(id);
 
 function showMessage(id, message) {
   el(id).textContent = message;
+}
+
+function dateKey(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }
 
 function formatDate(value) {
@@ -184,35 +280,212 @@ function formatDate(value) {
   });
 }
 
-async function loadAvailability() {
-  const container = el('availability');
-  container.textContent = 'Loading availability...';
+function formatTime(value) {
+  return new Date(value).toLocaleTimeString('en-GB', {
+    hour:'2-digit',
+    minute:'2-digit'
+  });
+}
 
-  const { data, error } = await supabase
-    .from('public_availability')
-    .select('starts_at,ends_at')
-    .gte('ends_at', new Date().toISOString())
+function sameDay(a, b) {
+  return dateKey(a) === dateKey(b);
+}
+
+function bookingTouchesDay(booking, day) {
+  const dayStart = new Date(day.getFullYear(), day.getMonth(), day.getDate());
+  const dayEnd = new Date(day.getFullYear(), day.getMonth(), day.getDate() + 1);
+  return new Date(booking.starts_at) < dayEnd &&
+         new Date(booking.ends_at) > dayStart;
+}
+
+function bookingsForDay(day) {
+  return calendarBookings.filter(booking => bookingTouchesDay(booking, day));
+}
+
+function changeMonth(amount) {
+  calendarMonth = new Date(
+    calendarMonth.getFullYear(),
+    calendarMonth.getMonth() + amount,
+    1
+  );
+  selectedDate = new Date(
+    calendarMonth.getFullYear(),
+    calendarMonth.getMonth(),
+    1
+  );
+  loadCalendar();
+}
+
+async function loadCalendar() {
+  const grid = el('calendarGrid');
+  grid.innerHTML = '<div class="small">Loading calendar...</div>';
+  el('dayDetails').textContent = 'Loading bookings...';
+
+  const monthStart = new Date(
+    calendarMonth.getFullYear(),
+    calendarMonth.getMonth(),
+    1
+  );
+  const nextMonth = new Date(
+    calendarMonth.getFullYear(),
+    calendarMonth.getMonth() + 1,
+    1
+  );
+
+  let query;
+
+  if (approved) {
+    query = supabase
+      .from('member_booking_details')
+      .select('id,starts_at,ends_at,display_name');
+  } else {
+    query = supabase
+      .from('public_availability')
+      .select('starts_at,ends_at');
+  }
+
+  const { data, error } = await query
+    .gte('ends_at', monthStart.toISOString())
+    .lt('starts_at', nextMonth.toISOString())
     .order('starts_at')
-    .limit(100);
+    .limit(300);
 
   if (error) {
-    container.textContent = 'Could not load availability. Please refresh.';
-    console.error('Availability error:', error);
+    console.error('Calendar loading error:', error);
+    calendarBookings = [];
+    el('monthTitle').textContent = monthStart.toLocaleDateString('en-GB', {
+      month:'long', year:'numeric'
+    });
+    grid.innerHTML = '<div class="small">Could not load the calendar. Please refresh.</div>';
+    el('dayDetails').textContent = 'Calendar information could not be loaded.';
     return;
   }
 
-  if (!data.length) {
-    container.textContent = 'No upcoming bookings. The studio currently has no recorded bookings.';
+  calendarBookings = data || [];
+  renderCalendar();
+}
+
+function renderCalendar() {
+  const year = calendarMonth.getFullYear();
+  const month = calendarMonth.getMonth();
+
+  el('monthTitle').textContent = calendarMonth.toLocaleDateString('en-GB', {
+    month:'long', year:'numeric'
+  });
+
+  el('calendarPrivacy').textContent = approved
+    ? 'Members can see booking times and member names. Public visitors cannot see member names.'
+    : 'Booked dates and times are shown below. Member names are private.';
+
+  const firstDay = new Date(year, month, 1);
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  // Monday-first calendar
+  const startingOffset = (firstDay.getDay() + 6) % 7;
+  const totalCells = Math.ceil((startingOffset + daysInMonth) / 7) * 7;
+
+  const weekdays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let html = weekdays.map(day =>
+    `<div class="weekday">${day}</div>`
+  ).join('');
+
+  const today = new Date();
+
+  for (let i = 0; i < totalCells; i++) {
+    const dayNumber = i - startingOffset + 1;
+    const day = new Date(year, month, dayNumber);
+    const inMonth = day.getMonth() === month;
+    const dayBookings = bookingsForDay(day);
+    const isToday = sameDay(day, today);
+    const isSelected = sameDay(day, selectedDate);
+
+    const classes = [
+      'day',
+      inMonth ? '' : 'outside',
+      isToday ? 'today' : '',
+      isSelected ? 'selected' : '',
+      dayBookings.length ? 'has-booking' : ''
+    ].filter(Boolean).join(' ');
+
+    let mark = '';
+    if (dayBookings.length) {
+      mark = `<span class="day-mark">${dayBookings.length} booked</span>`;
+    }
+
+    html += `
+      <button type="button" class="${classes}" data-date="${dateKey(day)}"
+        aria-label="${day.toDateString()}${dayBookings.length ? ', booked' : ''}">
+        <span class="day-number">${day.getDate()}</span>
+        ${mark}
+      </button>
+    `;
+  }
+
+  const grid = el('calendarGrid');
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('button[data-date]').forEach(button => {
+    button.addEventListener('click', () => {
+      const parts = button.dataset.date.split('-').map(Number);
+      selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+      renderCalendar();
+    });
+  });
+
+  renderDayDetails();
+}
+
+function renderDayDetails() {
+  const title = selectedDate.toLocaleDateString('en-GB', {
+    weekday:'long', day:'numeric', month:'long', year:'numeric'
+  });
+
+  el('selectedDateTitle').textContent = title;
+
+  const bookings = bookingsForDay(selectedDate);
+  const details = el('dayDetails');
+
+  if (!bookings.length) {
+    details.innerHTML = '<p class="empty-day">No bookings recorded for this date. The studio has no recorded bookings during this day.</p>';
     return;
   }
 
-  container.innerHTML = data.map(item => `
-    <div class="booking">
-      <strong>Studio booked</strong><br>
-      ${formatDate(item.starts_at)}<br>
-      Until ${formatDate(item.ends_at)}
-    </div>
-  `).join('');
+  details.innerHTML = bookings.map(booking => {
+    const start = new Date(booking.starts_at);
+    const end = new Date(booking.ends_at);
+    const dayStart = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate()
+    );
+    const dayEnd = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate() + 1
+    );
+
+    const displayedStart = start < dayStart ? '00:00 (already in progress)' : formatTime(start);
+    const displayedEnd = end > dayEnd ? 'Midnight (continues next day)' : formatTime(end);
+
+    const memberName = approved && booking.display_name
+      ? `<br><strong>Member: ${escapeHTML(booking.display_name)}</strong>`
+      : '';
+
+    return `
+      <div class="booking">
+        <strong>Studio booked</strong><br>
+        ${displayedStart} – ${displayedEnd}
+        ${memberName}
+      </div>
+    `;
+  }).join('');
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;',
+    '"':'&quot;', "'":'&#39;'
+  })[char]);
 }
 
 async function updateAccount() {
@@ -232,6 +505,7 @@ async function updateAccount() {
 
   if (!currentUser) {
     approved = false;
+    await loadCalendar();
     return;
   }
 
@@ -245,6 +519,7 @@ async function updateAccount() {
     console.error('Membership profile lookup failed:', error);
     approved = false;
     showMessage('memberStatus', 'Membership error: ' + error.message);
+    await loadCalendar();
     return;
   }
 
@@ -256,6 +531,8 @@ async function updateAccount() {
   } else {
     showMessage('memberStatus', 'Your account has been created. Your membership is awaiting approval before you can book.');
   }
+
+  await loadCalendar();
 }
 
 async function signup() {
@@ -267,10 +544,7 @@ async function signup() {
     return;
   }
 
-  const { error } = await supabase.auth.signUp({
-    email,
-    password
-  });
+  const { error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
     showMessage('accountMessage', error.message);
@@ -301,6 +575,7 @@ async function login() {
 
 async function logout() {
   await supabase.auth.signOut();
+  approved = false;
   showMessage('accountMessage', 'You have logged out.');
   await updateAccount();
 }
@@ -353,7 +628,7 @@ async function makeBooking() {
   el('startTime').value = '';
   el('endTime').value = '';
   el('duration').textContent = 'Your booking duration will appear here.';
-  await loadAvailability();
+  await loadCalendar();
 }
 
 function updateDuration() {
@@ -367,6 +642,7 @@ function updateDuration() {
   }
 
   const hours = (end - start) / 3600000;
+
   if (hours <= 0) {
     el('duration').textContent = 'Please choose an end time after your start time.';
   } else {
@@ -381,13 +657,13 @@ window.login = login;
 window.signup = signup;
 window.logout = logout;
 window.makeBooking = makeBooking;
-window.loadAvailability = loadAvailability;
+window.loadCalendar = loadCalendar;
+window.changeMonth = changeMonth;
 
 supabase.auth.onAuthStateChange(() => {
   setTimeout(updateAccount, 0);
 });
 
-await loadAvailability();
 await updateAccount();
 </script>
 

@@ -1,4 +1,6 @@
 
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,150 +8,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Black Gold Sun Records</title>
 <style>
-* { box-sizing:border-box; }
-body {
-  margin:0; background:#151515; color:#f2eadc;
-  font-family:Arial,sans-serif; text-align:center;
-}
-header { padding:35px 20px 15px; }
-.logo { width:170px; max-width:70%; margin-bottom:18px; }
-h1 { color:#d5b77c; letter-spacing:3px; font-size:23px; }
-.subtitle { color:#c9a96e; letter-spacing:3px; font-size:12px; }
-.intro { max-width:550px; margin:25px auto; padding:0 20px; line-height:1.7; }
-.spaces { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:20px; }
-.space-card {
-  display:block; width:290px; padding:30px 20px;
-  border:1px solid #8e7449; color:#f2eadc;
-  text-decoration:none; transition:.2s;
-}
-.space-card:hover { background:#29251e; border-color:#d5b77c; }
-h2 { color:#d5b77c; font-weight:normal; letter-spacing:2px; }
-.page { display:none; padding:20px 15px 60px; }
-.page:target { display:block; }
-body:has(.page:target) #home { display:none; }
-.back { color:#d5b77c; text-decoration:none; }
-.panel {
-  max-width:750px; margin:25px auto; padding:25px;
-  border:1px solid #8e7449; text-align:left;
-}
-.panel h2 { text-align:center; }
-input, button {
-  width:100%; padding:12px; margin:7px 0;
-  font-size:15px; border-radius:3px;
-}
-input { background:#f2eadc; border:1px solid #8e7449; color:#151515; }
-button {
-  background:#c9a96e; color:#151515; border:0;
-  cursor:pointer; font-weight:bold;
-}
-button:hover { background:#e1c58d; }
-.secondary { background:transparent; color:#d5b77c; border:1px solid #8e7449; }
-.small { font-size:13px; color:#bdb3a5; line-height:1.6; }
-.message { margin:12px 0; color:#d5b77c; line-height:1.5; }
-.hidden { display:none !important; }
-footer { padding:30px; color:#827967; font-size:12px; }
-
-.calendar { margin-top:20px; }
-.calendar-heading {
-  display:flex; align-items:center; justify-content:space-between;
-  gap:10px; margin-bottom:15px;
-}
-.calendar-heading button {
-  width:auto; min-width:85px; margin:0;
-}
-.calendar-heading h3 {
-  color:#d5b77c; font-size:17px; font-weight:normal;
-  letter-spacing:1px; margin:0;
-}
-.calendar-grid {
-  display:grid;
-  grid-template-columns:repeat(7,minmax(0,1fr));
-  gap:4px;
-}
-.weekday {
-  color:#c9a96e; font-size:11px; padding:9px 0;
-  text-align:center;
-}
-.day {
-  min-width:0; min-height:72px; padding:7px 2px;
-  margin:0; border:1px solid #514633;
-  background:#202020; color:#f2eadc;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:flex-start;
-  gap:5px; font-size:13px;
-}
-.day:hover { background:#30291e; }
-.day.outside { opacity:.35; }
-.day.today { border-color:#d5b77c; }
-.day.selected {
-  background:#403522; border:2px solid #d5b77c;
-}
-.day.has-booking { background:#29251e; }
-.day-number { font-size:13px; }
-.day-mark {
-  color:#d5b77c; font-size:10px;
-  line-height:1.2; overflow-wrap:anywhere;
-}
-.calendar-legend {
-  display:flex; flex-wrap:wrap; gap:15px;
-  margin-top:14px; color:#bdb3a5; font-size:12px;
-}
-.legend-dot {
-  display:inline-block; width:9px; height:9px;
-  border-radius:50%; background:#d5b77c; margin-right:5px;
-}
-.day-details {
-  margin-top:25px; padding-top:18px;
-  border-top:1px solid #514633;
-}
-.day-details h3 {
-  color:#d5b77c; font-weight:normal; letter-spacing:1px;
-}
-.booking {
-  border-bottom:1px solid #514633;
-  padding:13px 3px; line-height:1.7;
-}
-.booking:last-child { border:0; }
-.booking strong { color:#d5b77c; }
-.empty-day { color:#bdb3a5; line-height:1.6; }
-@media(max-width:420px) {
-  .panel { padding:15px 10px; }
-  .day { min-height:60px; }
-  .day-mark { font-size:9px; }
-  .calendar-heading button { min-width:65px; padding:10px 5px; }
-  .calendar-heading h3 { font-size:14px; }
+*{box-sizing:border-box}
+body{margin:0;background:#151515;color:#f2eadc;font-family:Arial,sans-serif;text-align:center}
+header{padding:35px 20px 15px}
+.logo{width:170px;max-width:70%;margin-bottom:18px}
+h1{color:#d5b77c;letter-spacing:3px;font-size:23px}
+.subtitle{color:#c9a96e;letter-spacing:3px;font-size:12px}
+.intro{max-width:550px;margin:25px auto;padding:0 20px;line-height:1.7}
+.spaces{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:20px}
+.space-card{display:block;width:290px;padding:30px 20px;border:1px solid #8e7449;color:#f2eadc;text-decoration:none;transition:.2s}
+.space-card:hover{background:#29251e;border-color:#d5b77c}
+h2{color:#d5b77c;font-weight:normal;letter-spacing:2px}
+.page{display:none;padding:20px 15px 60px}
+.page:target{display:block}
+body:has(.page:target) #home{display:none}
+.back{color:#d5b77c;text-decoration:none}
+.panel{max-width:750px;margin:25px auto;padding:25px;border:1px solid #8e7449;text-align:left}
+.panel h2{text-align:center}
+input,button,select{width:100%;padding:12px;margin:7px 0;font-size:15px;border-radius:3px}
+input,select{background:#f2eadc;border:1px solid #8e7449;color:#151515}
+button{background:#c9a96e;color:#151515;border:0;cursor:pointer;font-weight:bold}
+button:hover{background:#e1c58d}
+.secondary{background:transparent;color:#d5b77c;border:1px solid #8e7449}
+.small{font-size:13px;color:#bdb3a5;line-height:1.6}
+.message{margin:12px 0;color:#d5b77c;line-height:1.5}
+.hidden{display:none!important}
+footer{padding:30px;color:#827967;font-size:12px}
+.calendar{margin-top:20px}
+.calendar-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}
+.calendar-heading button{width:auto;min-width:85px;margin:0}
+.calendar-heading h3{color:#d5b77c;font-size:17px;font-weight:normal;letter-spacing:1px;margin:0}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.weekday{color:#c9a96e;font-size:11px;padding:9px 0;text-align:center}
+.day{min-width:0;min-height:72px;padding:7px 2px;margin:0;border:1px solid #514633;background:#202020;color:#f2eadc;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;font-size:13px}
+.day:hover{background:#30291e}
+.day.outside{opacity:.35}
+.day.today{border-color:#d5b77c}
+.day.selected{background:#403522;border:2px solid #d5b77c}
+.day.has-booking{background:#29251e}
+.day-mark{color:#d5b77c;font-size:10px;line-height:1.2;overflow-wrap:anywhere}
+.calendar-legend{display:flex;flex-wrap:wrap;gap:15px;margin-top:14px;color:#bdb3a5;font-size:12px}
+.legend-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#d5b77c;margin-right:5px}
+.day-details{margin-top:25px;padding-top:18px;border-top:1px solid #514633}
+.day-details h3{color:#d5b77c;font-weight:normal;letter-spacing:1px}
+.booking,.session-card,.invitation-card{border-bottom:1px solid #514633;padding:15px 3px;line-height:1.7}
+.booking strong,.session-card strong,.invitation-card strong{color:#d5b77c}
+.session-card{border:1px solid #514633;padding:15px;margin:12px 0}
+.session-card button,.invitation-card button{margin-top:8px}
+.session-actions{margin-top:12px;padding-top:10px;border-top:1px solid #514633}
+.status{color:#c9a96e;font-size:13px}
+.empty-day{color:#bdb3a5;line-height:1.6}
+.section-heading{margin-top:28px;padding-top:12px;border-top:1px solid #514633}
+@media(max-width:420px){
+.panel{padding:15px 10px}
+.day{min-height:60px}
+.day-mark{font-size:9px}
+.calendar-heading button{min-width:65px;padding:10px 5px}
+.calendar-heading h3{font-size:14px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
-<img class="logo"
-src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG"
-alt="Black Gold Sun Records logo">
+<img class="logo" src="https://raw.githubusercontent.com/BlackGoldSunRecords/Studio-Booking/main/Black%20Gold%20Sun%20White%20line%203.PNG" alt="Black Gold Sun Records logo">
 <h1>BLACK GOLD SUN RECORDS</h1>
 <div class="subtitle">MUSIC STUDIO · CREATIVE SPACE</div>
 </header>
 
 <main>
-
 <section id="home">
-<div class="intro">
-Independent creative spaces in London.
-A home for music, tattooing and creative expression.
-</div>
+<div class="intro">Independent creative spaces in London.<br>A home for music, tattooing and creative expression.</div>
 <div class="spaces">
-<a class="space-card" href="#music">
-<h2>Music Studio</h2>
-<p>Recording, creating and making music.</p>
-<p>Enter the studio →</p>
-</a>
-<a class="space-card" href="#tattoo">
-<h2>Tattoo Space</h2>
-<p>A creative space for tattooing.</p>
-<p>Coming soon →</p>
-</a>
+<a class="space-card" href="#music"><h2>Music Studio</h2><p>Recording, creating and making music.</p><p>Enter the studio →</p></a>
+<a class="space-card" href="#tattoo"><h2>Tattoo Space</h2><p>A creative space for tattooing.</p><p>Coming soon →</p></a>
 </div>
 </section>
 
@@ -160,39 +91,26 @@ A home for music, tattooing and creative expression.
 
 <div class="panel">
 <h2>Studio calendar</h2>
-<p class="small" id="calendarPrivacy">
-Booked dates and times are shown below. Member names are private.
-</p>
-
+<p class="small" id="calendarPrivacy">Booked dates and times are shown below. Member names are private.</p>
 <div class="calendar">
 <div class="calendar-heading">
 <button class="secondary" onclick="changeMonth(-1)">← Previous</button>
 <h3 id="monthTitle">Loading...</h3>
 <button class="secondary" onclick="changeMonth(1)">Next →</button>
 </div>
-
 <div class="calendar-grid" id="calendarGrid"></div>
-
-<div class="calendar-legend">
-<span><span class="legend-dot"></span>Booked time</span>
-<span>Outlined date = today</span>
-</div>
-
+<div class="calendar-legend"><span><span class="legend-dot"></span>Booked time</span><span>Outlined date = today</span></div>
 <div class="day-details">
 <h3 id="selectedDateTitle">Select a date</h3>
-<div id="dayDetails" class="empty-day">
-Select a day on the calendar to see its bookings.
+<div id="dayDetails" class="empty-day">Select a day on the calendar to see its bookings.</div>
 </div>
 </div>
-</div>
-
 <button class="secondary" onclick="loadCalendar()">Refresh calendar</button>
 </div>
 
 <div class="panel" id="accountPanel">
 <h2>Member access</h2>
 <p class="small">Log in to your account or create an account to request membership.</p>
-
 <div id="loggedOut">
 <label>Email address</label>
 <input id="email" type="email" placeholder="Your email address" autocomplete="email">
@@ -201,7 +119,6 @@ Select a day on the calendar to see its bookings.
 <button onclick="login()">Log in</button>
 <button class="secondary" onclick="signup()">Create account</button>
 </div>
-
 <div id="loggedIn" class="hidden">
 <p id="memberStatus" class="message"></p>
 <button class="secondary" onclick="logout()">Log out</button>
@@ -211,22 +128,30 @@ Select a day on the calendar to see its bookings.
 
 <div class="panel hidden" id="bookingPanel">
 <h2>Book the studio</h2>
-<p class="small">
-Choose your start and finish times. Bookings can cross midnight,
-but must be no longer than 10 hours.
-</p>
-
+<p class="small">Choose your start and finish times. Initial bookings can be up to 10 hours and may cross midnight.</p>
 <label>Start date and time</label>
 <input id="startTime" type="datetime-local">
-
 <label>End date and time</label>
 <input id="endTime" type="datetime-local">
-
 <p id="duration" class="message">Your booking duration will appear here.</p>
 <button onclick="makeBooking()">Confirm booking</button>
 <div id="bookingMessage" class="message"></div>
+
+<div class="section-heading">
+<h2>Shared sessions</h2>
+<p class="small">Invite another approved member to join one of your bookings. They must accept before their name is added to the session.</p>
 </div>
 
+<div id="invitationsArea">
+<h3>Invitations to you</h3>
+<div id="pendingInvitations" class="small">Loading invitations...</div>
+</div>
+
+<div class="section-heading">
+<h3>Your studio sessions</h3>
+<div id="mySessions" class="small">Loading your sessions...</div>
+</div>
+</div>
 </section>
 
 <section id="tattoo" class="page">
@@ -237,435 +162,54 @@ but must be no longer than 10 hours.
 <p class="message">COMING SOON</p>
 </div>
 </section>
-
 </main>
-
 <footer>BLACK GOLD SUN RECORDS</footer>
 
 <script type="module">
-import { createClient } from
-'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const SUPABASE_URL = 'https://plofzjsbzshchrzzzoqh.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_ZV8Mp-6q7agGxlNfJZOrEA_OP5ibWNH';
+const SUPABASE_URL='https://plofzjsbzshchrzzzoqh.supabase.co';
+const SUPABASE_KEY='sb_publishable_ZV8Mp-6q7agGxlNfJZOrEA_OP5ibWNH';
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+let currentUser=null;
+let approved=false;
+let isAdmin=false;
+let calendarMonth=new Date();
+let selectedDate=new Date();
+let calendarBookings=[];
+let sessionRows=[];
+let participantRows=[];
+let directoryRows=[];
 
-let currentUser = null;
-let approved = false;
-let calendarMonth = new Date();
-let selectedDate = new Date();
-let calendarBookings = [];
-
-const el = id => document.getElementById(id);
-
-function showMessage(id, message) {
-  el(id).textContent = message;
+const el=id=>document.getElementById(id);
+function showMessage(id,message){el(id).textContent=message}
+function escapeHTML(value){
+ return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function dateKey(date){
+ return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+}
+function formatTime(value){
+ return new Date(value).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+}
+function sameDay(a,b){return dateKey(a)===dateKey(b)}
+function bookingTouchesDay(booking,day){
+ const start=new Date(day.getFullYear(),day.getMonth(),day.getDate());
+ const end=new Date(day.getFullYear(),day.getMonth(),day.getDate()+1);
+ return new Date(booking.starts_at)<end && new Date(booking.ends_at)>start;
+}
+function bookingsForDay(day){return calendarBookings.filter(b=>bookingTouchesDay(b,day))}
+function changeMonth(amount){
+ calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+amount,1);
+ selectedDate=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth(),1);
+ loadCalendar();
 }
 
-function dateKey(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-
-function formatDate(value) {
-  return new Date(value).toLocaleString('en-GB', {
-    weekday:'short',
-    day:'numeric',
-    month:'short',
-    hour:'2-digit',
-    minute:'2-digit'
-  });
-}
-
-function formatTime(value) {
-  return new Date(value).toLocaleTimeString('en-GB', {
-    hour:'2-digit',
-    minute:'2-digit'
-  });
-}
-
-function sameDay(a, b) {
-  return dateKey(a) === dateKey(b);
-}
-
-function bookingTouchesDay(booking, day) {
-  const dayStart = new Date(day.getFullYear(), day.getMonth(), day.getDate());
-  const dayEnd = new Date(day.getFullYear(), day.getMonth(), day.getDate() + 1);
-  return new Date(booking.starts_at) < dayEnd &&
-         new Date(booking.ends_at) > dayStart;
-}
-
-function bookingsForDay(day) {
-  return calendarBookings.filter(booking => bookingTouchesDay(booking, day));
-}
-
-function changeMonth(amount) {
-  calendarMonth = new Date(
-    calendarMonth.getFullYear(),
-    calendarMonth.getMonth() + amount,
-    1
-  );
-  selectedDate = new Date(
-    calendarMonth.getFullYear(),
-    calendarMonth.getMonth(),
-    1
-  );
-  loadCalendar();
-}
-
-async function loadCalendar() {
-  const grid = el('calendarGrid');
-  grid.innerHTML = '<div class="small">Loading calendar...</div>';
-  el('dayDetails').textContent = 'Loading bookings...';
-
-  const monthStart = new Date(
-    calendarMonth.getFullYear(),
-    calendarMonth.getMonth(),
-    1
-  );
-  const nextMonth = new Date(
-    calendarMonth.getFullYear(),
-    calendarMonth.getMonth() + 1,
-    1
-  );
-
-  let query;
-
-  if (approved) {
-    query = supabase
-      .from('member_booking_details')
-      .select('id,starts_at,ends_at,display_name');
-  } else {
-    query = supabase
-      .from('public_availability')
-      .select('starts_at,ends_at');
-  }
-
-  const { data, error } = await query
-    .gte('ends_at', monthStart.toISOString())
-    .lt('starts_at', nextMonth.toISOString())
-    .order('starts_at')
-    .limit(300);
-
-  if (error) {
-    console.error('Calendar loading error:', error);
-    calendarBookings = [];
-    el('monthTitle').textContent = monthStart.toLocaleDateString('en-GB', {
-      month:'long', year:'numeric'
-    });
-    grid.innerHTML = '<div class="small">Could not load the calendar. Please refresh.</div>';
-    el('dayDetails').textContent = 'Calendar information could not be loaded.';
-    return;
-  }
-
-  calendarBookings = data || [];
-  renderCalendar();
-}
-
-function renderCalendar() {
-  const year = calendarMonth.getFullYear();
-  const month = calendarMonth.getMonth();
-
-  el('monthTitle').textContent = calendarMonth.toLocaleDateString('en-GB', {
-    month:'long', year:'numeric'
-  });
-
-  el('calendarPrivacy').textContent = approved
-    ? 'Members can see booking times and member names. Public visitors cannot see member names.'
-    : 'Booked dates and times are shown below. Member names are private.';
-
-  const firstDay = new Date(year, month, 1);
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  // Monday-first calendar
-  const startingOffset = (firstDay.getDay() + 6) % 7;
-  const totalCells = Math.ceil((startingOffset + daysInMonth) / 7) * 7;
-
-  const weekdays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  let html = weekdays.map(day =>
-    `<div class="weekday">${day}</div>`
-  ).join('');
-
-  const today = new Date();
-
-  for (let i = 0; i < totalCells; i++) {
-    const dayNumber = i - startingOffset + 1;
-    const day = new Date(year, month, dayNumber);
-    const inMonth = day.getMonth() === month;
-    const dayBookings = bookingsForDay(day);
-    const isToday = sameDay(day, today);
-    const isSelected = sameDay(day, selectedDate);
-
-    const classes = [
-      'day',
-      inMonth ? '' : 'outside',
-      isToday ? 'today' : '',
-      isSelected ? 'selected' : '',
-      dayBookings.length ? 'has-booking' : ''
-    ].filter(Boolean).join(' ');
-
-    let mark = '';
-    if (dayBookings.length) {
-      mark = `<span class="day-mark">${dayBookings.length} booked</span>`;
-    }
-
-    html += `
-      <button type="button" class="${classes}" data-date="${dateKey(day)}"
-        aria-label="${day.toDateString()}${dayBookings.length ? ', booked' : ''}">
-        <span class="day-number">${day.getDate()}</span>
-        ${mark}
-      </button>
-    `;
-  }
-
-  const grid = el('calendarGrid');
-  grid.innerHTML = html;
-
-  grid.querySelectorAll('button[data-date]').forEach(button => {
-    button.addEventListener('click', () => {
-      const parts = button.dataset.date.split('-').map(Number);
-      selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
-      renderCalendar();
-    });
-  });
-
-  renderDayDetails();
-}
-
-function renderDayDetails() {
-  const title = selectedDate.toLocaleDateString('en-GB', {
-    weekday:'long', day:'numeric', month:'long', year:'numeric'
-  });
-
-  el('selectedDateTitle').textContent = title;
-
-  const bookings = bookingsForDay(selectedDate);
-  const details = el('dayDetails');
-
-  if (!bookings.length) {
-    details.innerHTML = '<p class="empty-day">No bookings recorded for this date. The studio has no recorded bookings during this day.</p>';
-    return;
-  }
-
-  details.innerHTML = bookings.map(booking => {
-    const start = new Date(booking.starts_at);
-    const end = new Date(booking.ends_at);
-    const dayStart = new Date(
-      selectedDate.getFullYear(),
-      selectedDate.getMonth(),
-      selectedDate.getDate()
-    );
-    const dayEnd = new Date(
-      selectedDate.getFullYear(),
-      selectedDate.getMonth(),
-      selectedDate.getDate() + 1
-    );
-
-    const displayedStart = start < dayStart ? '00:00 (already in progress)' : formatTime(start);
-    const displayedEnd = end > dayEnd ? 'Midnight (continues next day)' : formatTime(end);
-
-    const memberName = approved && booking.display_name
-      ? `<br><strong>Member: ${escapeHTML(booking.display_name)}</strong>`
-      : '';
-
-    return `
-      <div class="booking">
-        <strong>Studio booked</strong><br>
-        ${displayedStart} – ${displayedEnd}
-        ${memberName}
-      </div>
-    `;
-  }).join('');
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    '&':'&amp;', '<':'&lt;', '>':'&gt;',
-    '"':'&quot;', "'":'&#39;'
-  })[char]);
-}
-
-async function updateAccount() {
-  const { data, error: sessionError } = await supabase.auth.getSession();
-
-  if (sessionError) {
-    console.error('Session error:', sessionError);
-    showMessage('accountMessage', 'Login session error: ' + sessionError.message);
-    return;
-  }
-
-  currentUser = data.session?.user || null;
-
-  el('loggedOut').classList.toggle('hidden', !!currentUser);
-  el('loggedIn').classList.toggle('hidden', !currentUser);
-  el('bookingPanel').classList.add('hidden');
-
-  if (!currentUser) {
-    approved = false;
-    await loadCalendar();
-    return;
-  }
-
-  const { data: profile, error } = await supabase
-    .from('profiles')
-    .select('is_approved,is_admin')
-    .eq('id', currentUser.id)
-    .single();
-
-  if (error) {
-    console.error('Membership profile lookup failed:', error);
-    approved = false;
-    showMessage('memberStatus', 'Membership error: ' + error.message);
-    await loadCalendar();
-    return;
-  }
-
-  approved = profile.is_approved || profile.is_admin;
-
-  if (approved) {
-    showMessage('memberStatus', 'Welcome! Your membership is approved.');
-    el('bookingPanel').classList.remove('hidden');
-  } else {
-    showMessage('memberStatus', 'Your account has been created. Your membership is awaiting approval before you can book.');
-  }
-
-  await loadCalendar();
-}
-
-async function signup() {
-  const email = el('email').value.trim();
-  const password = el('password').value;
-
-  if (!email || password.length < 8) {
-    showMessage('accountMessage', 'Enter your email and a password of at least 8 characters.');
-    return;
-  }
-
-  const { error } = await supabase.auth.signUp({ email, password });
-
-  if (error) {
-    showMessage('accountMessage', error.message);
-    return;
-  }
-
-  showMessage('accountMessage', 'Account created! Check your email if confirmation is requested, then log in. Membership approval is required before booking.');
-  await updateAccount();
-}
-
-async function login() {
-  const email = el('email').value.trim();
-  const password = el('password').value;
-
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  if (error) {
-    showMessage('accountMessage', error.message);
-    return;
-  }
-
-  showMessage('accountMessage', 'You are logged in.');
-  await updateAccount();
-}
-
-async function logout() {
-  await supabase.auth.signOut();
-  approved = false;
-  showMessage('accountMessage', 'You have logged out.');
-  await updateAccount();
-}
-
-async function makeBooking() {
-  if (!currentUser || !approved) {
-    showMessage('bookingMessage', 'You need approved membership to book.');
-    return;
-  }
-
-  const startValue = el('startTime').value;
-  const endValue = el('endTime').value;
-  const start = new Date(startValue);
-  const end = new Date(endValue);
-  const duration = (end - start) / 3600000;
-
-  if (!startValue || !endValue ||
-      isNaN(duration) || duration <= 0) {
-    showMessage('bookingMessage', 'Please enter valid start and finish times.');
-    return;
-  }
-
-  if (duration > 10) {
-    showMessage('bookingMessage', 'Bookings cannot be longer than 10 hours.');
-    return;
-  }
-
-  if (start < new Date()) {
-    showMessage('bookingMessage', 'You cannot book a time in the past.');
-    return;
-  }
-
-  const { error } = await supabase.from('bookings').insert({
-    user_id: currentUser.id,
-    starts_at: start.toISOString(),
-    ends_at: end.toISOString(),
-    original_ends_at: end.toISOString()
-  });
-
-  if (error) {
-    if (error.code === '23P01') {
-      showMessage('bookingMessage', 'Sorry, that time overlaps another booking. Please choose another slot.');
-    } else {
-      showMessage('bookingMessage', 'Booking could not be saved: ' + error.message);
-    }
-    return;
-  }
-
-  showMessage('bookingMessage', 'Your studio booking has been saved!');
-  el('startTime').value = '';
-  el('endTime').value = '';
-  el('duration').textContent = 'Your booking duration will appear here.';
-  await loadCalendar();
-}
-
-function updateDuration() {
-  const start = new Date(el('startTime').value);
-  const end = new Date(el('endTime').value);
-
-  if (!el('startTime').value || !el('endTime').value ||
-      isNaN(start) || isNaN(end)) {
-    el('duration').textContent = 'Your booking duration will appear here.';
-    return;
-  }
-
-  const hours = (end - start) / 3600000;
-
-  if (hours <= 0) {
-    el('duration').textContent = 'Please choose an end time after your start time.';
-  } else {
-    el('duration').textContent = `Booking length: ${hours.toFixed(2)} hours${hours > 10 ? ' — maximum 10 hours.' : ''}`;
-  }
-}
-
-el('startTime').addEventListener('change', updateDuration);
-el('endTime').addEventListener('change', updateDuration);
-
-window.login = login;
-window.signup = signup;
-window.logout = logout;
-window.makeBooking = makeBooking;
-window.loadCalendar = loadCalendar;
-window.changeMonth = changeMonth;
-
-supabase.auth.onAuthStateChange(() => {
-  setTimeout(updateAccount, 0);
-});
-
-await updateAccount();
-</script>
-
-</body>
-</html>
+async function loadCalendar(){
+ const grid=el('calendarGrid');
+ grid.innerHTML='<div class="small">Loading calendar...</div>';
+ el('dayDetails').textContent='Loading bookings...';
+ const monthStart=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth(),1);
+ const nextMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+1,1);
+ let query=approved
